@@ -3,13 +3,13 @@ function ParallelProcessing
 clear all
 close all
 
-FileName = '../Model/o3_surface_20180701000000.nc';
+FileName = 'C:\Users\Vanshul Kumar\Downloads\Model\o3_surface_20180701000000.nc';
 
 Contents = ncinfo(FileName);
 
 Lat = ncread(FileName, 'lat');
 Lon = ncread(FileName, 'lon');
-NumHours = 5;
+NumHours = 2;
 
 %% 2: Processing parameters
 % ##  provided by customer  ##
@@ -32,7 +32,7 @@ EnsembleVectorPar = zeros(NumLocations, NumHours); % pre-allocate memory
 % We use an index named 'NumHour' in our loop
 % The section 'parallel processing' will process the data location one
 % after the other, reporting on the time involved.
-Num2Process = 1000;
+Num2Process = 50000;
 Steps = 100;
 tic
 for idxTime = 1:NumHours
@@ -85,10 +85,10 @@ for idxTime = 1:NumHours
     DataQ = parallel.pool.DataQueue; % Create a variable in the parallel pool
 %     
 %     % Create a waitbar and handle top it:
-    hWaitBar = waitbar(0, sprintf('Time period %i, Please wait ...', idxTime));
+   % hWaitBar = waitbar(0, sprintf('Time period %i, Please wait ...', idxTime));
 %     % Define the function to call when new data is received in the data queue
 %     % 'DataQ'. See end of script for the function definition.
-    afterEach(DataQ, @nUpdateWaitbar);
+    %afterEach(DataQ, @nUpdateWaitbar);
     N = Num2Process/Steps; % the total number of data to process
     p = 1; % offset so the waitbar shows some colour quickly.
     
@@ -106,7 +106,7 @@ for idxTime = 1:NumHours
         end
     end
     
-    close(hWaitBar); % close the wait bar
+    %close(hWaitBar); % close the wait bar
     
     T3(idxTime) = toc - T4; % record the parallel processing time for this hour of data
     fprintf('Parallel processing time for hour %i : %.1f s\n', idxTime, T3(idxTime))
@@ -121,9 +121,9 @@ fprintf('Total processing time for %i workers = %.2f s\n', PoolSize, sum(T3));
 
 %% 11: ### PROCESSING COMPLETE DATA NEEDS TO BE SAVED  ###
 
-function nUpdateWaitbar(~) % nested function
-    waitbar(p/N, hWaitBar,  sprintf('Hour %i, %.3f complete, %i out of %i', idxTime, p/N, p, N));
-    p = p + 1;
-end
+%function nUpdateWaitbar(~) % nested function
+%    waitbar(p/N, hWaitBar,  sprintf('Hour %i, %.3f complete, %i out of %i', idxTime, p/N, p, N));
+%    p = p + 1;
+%end
 
 end % end function

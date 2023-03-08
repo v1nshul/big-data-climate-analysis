@@ -39,10 +39,11 @@ for NumHour = 1:25 % loop through each hour
     % can ask your module leader for more information if you wish.
     [Data2Process, LatLon] = PrepareData(HourlyData, Lat, Lon);
     
-    %% Sequential analysis    
+    %% Sequential analysis
+    %size(Data2Process,1)
     t1 = toc;
     t2 = t1;
-    for idx = 1: size(Data2Process,1) % step through each data location to process the data
+    for idx = 1: 1000  % step through each data location to process the data
         
         % The analysis of the data creates an 'ensemble value' for each
         % location. This method is defined by

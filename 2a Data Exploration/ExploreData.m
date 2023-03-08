@@ -2,7 +2,7 @@
 clear all
 close all
 
-FileName = '../Model/o3_surface_20180701000000.nc';
+FileName = 'C:\Users\Vanshul Kumar\Downloads\Model\o3_surface_20180701000000.nc';
 
 Contents = ncinfo(FileName);
 
@@ -40,7 +40,7 @@ NumLat = 400;
 StartLon = 1;
 NumLon = 700;
 StartHour = 1;
-NumHour = 1;
+NumHour = 25;
 
 Data = ncread(FileName, 'chimere_ozone', [StartLon, StartLat, StartHour], [NumLon, NumLat, NumHour]);
 

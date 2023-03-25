@@ -1,7 +1,7 @@
 % Total data
 total_data = 6945100;
 
-% Processing time for 10,000 data points with 4 workers in my pc
+% Processing time for 50,000 data points with 4 workers in my pc
 data_points = 50000;
 workers = 4;
 processing_time = 69.9
@@ -38,7 +38,7 @@ num_workers = 1:20;
 time_per_datum = (total_time ./ total_data) ./ num_workers;
 
 % Plot the results
-plot(num_workers, time_per_datum, 'b-o', 'LineWidth', 2)
+plot(num_workers, time_per_datum, 'r-o', 'LineWidth', 2)
 xlabel('Number of Workers')
 ylabel('Time per Datum (s)')
 title('Time per Datum as a Function of the Number of Workers')

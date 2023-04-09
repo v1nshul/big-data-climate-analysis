@@ -7,7 +7,7 @@
 
 - To run the project, open MATLAB and navigate to the project directory. Run the main MATLAB script to execute the code.
 
-- Conatact for Project Report :grinning:
+- Contact for Project Report :grinning:
 
 <h1>Acknowledgments</h1>
 - This project was completed as part of a coursework project for a computer science program. We would like to thank our course instructor for their guidance and support throughout the project.
